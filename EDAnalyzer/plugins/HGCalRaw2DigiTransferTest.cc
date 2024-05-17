@@ -72,13 +72,13 @@ HGCalRaw2DigiTransferTest::analyze(const edm::Event& iEvent, const edm::EventSet
     for (int i = 0; i < oldSize; i++) {
         denseIdx = moduleIndexer_(hostDigisIn.view()[i].electronicsId());
 
-        if ( hostDigis.view()[i].tctp()  == hostDigis.view()[denseIdx].tctp()  )
-        if ( hostDigis.view()[i].adcm1() == hostDigis.view()[denseIdx].adcm1() )
-        if ( hostDigis.view()[i].adc()   == hostDigis.view()[denseIdx].adc()   )
-        if ( hostDigis.view()[i].tot()   == hostDigis.view()[denseIdx].tot()   )
-        if ( hostDigis.view()[i].toa()   == hostDigis.view()[denseIdx].toa()   )
-        if ( hostDigis.view()[i].cm()    == hostDigis.view()[denseIdx].cm()    )
-        if ( hostDigis.view()[i].flags() == hostDigis.view()[denseIdx].flags() )
+        if ( hostDigis.view()[i%newSize].tctp()  == hostDigis.view()[denseIdx].tctp()  )
+        if ( hostDigis.view()[i%newSize].adcm1() == hostDigis.view()[denseIdx].adcm1() )
+        if ( hostDigis.view()[i%newSize].adc()   == hostDigis.view()[denseIdx].adc()   )
+        if ( hostDigis.view()[i%newSize].tot()   == hostDigis.view()[denseIdx].tot()   )
+        if ( hostDigis.view()[i%newSize].toa()   == hostDigis.view()[denseIdx].toa()   )
+        if ( hostDigis.view()[i%newSize].cm()    == hostDigis.view()[denseIdx].cm()    )
+        if ( hostDigis.view()[i%newSize].flags() == hostDigis.view()[denseIdx].flags() )
     }
 
 }
